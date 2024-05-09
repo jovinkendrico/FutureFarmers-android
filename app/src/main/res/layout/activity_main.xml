@@ -3,17 +3,131 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:padding="16dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/background"
     tools:context=".MainActivity">
 
+
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tvSelamatDatang"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="16sp"
+        android:text="Selamat Datang!"
+        android:textColor="@color/abu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tvNama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ayo Pantau Tumbuh si Hidro"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSelamatDatang" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/clothingCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNama">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvSedangMenanam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Sedang Menanam"
+                android:textColor="@color/abu"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivGambarSayur"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_margin="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSedangMenanam"
+                app:layout_constraintEnd_toStartOf="tv"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvSayur"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Bok Choy"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="32sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/ivGambarSayur"
+                app:layout_constraintTop_toBottomOf="@+id/tvSedangMenanam" />
+
+            <TextView
+                android:id="@+id/tvUmurTanaman"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Umur Tanaman"
+                android:textColor="@color/abu"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@id/tvPanenDalam"
+                app:layout_constraintStart_toEndOf="@+id/ivGambarSayur"
+                app:layout_constraintTop_toBottomOf="@+id/tvSayur" />
+            <TextView
+                android:id="@+id/tvPanenDalam"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Panen Dalam"
+                android:textColor="@color/abu"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/tvUmurTanaman"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSayur" />
+            <TextView
+                android:id="@+id/tvUmur"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="13 Hari"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/ivGambarSayur"
+                app:layout_constraintEnd_toStarOf="tvPanen"
+                app:layout_constraintTop_toBottomOf="@+id/tvUmurTanaman"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/tvPanen"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="20 Hari"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tvPanenDalam"
+                app:layout_constraintTop_toBottomOf="@+id/tvPanenDalam" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
