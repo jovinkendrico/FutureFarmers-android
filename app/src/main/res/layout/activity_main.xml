@@ -46,6 +46,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvNama">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -68,9 +69,9 @@
                     android:layout_height="130dp"
                     android:layout_margin="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvSayur"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvSedangMenanam"
-                    app:layout_constraintEnd_toStartOf="tv"
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
@@ -80,8 +81,8 @@
                     android:layout_margin="10dp"
                     android:text="Bok Choy"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
                     android:textSize="32sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/ivGambarSayur"
@@ -98,6 +99,7 @@
                     app:layout_constraintEnd_toStartOf="@id/tvPanenDalam"
                     app:layout_constraintStart_toEndOf="@+id/ivGambarSayur"
                     app:layout_constraintTop_toBottomOf="@+id/tvSayur" />
+
                 <TextView
                     android:id="@+id/tvPanenDalam"
                     android:layout_width="0dp"
@@ -106,9 +108,10 @@
                     android:text="Panen Dalam"
                     android:textColor="@color/abu"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toEndOf="@id/tvUmurTanaman"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tvUmurTanaman"
                     app:layout_constraintTop_toBottomOf="@+id/tvSayur" />
+
                 <TextView
                     android:id="@+id/tvUmur"
                     android:layout_width="0dp"
@@ -117,10 +120,10 @@
                     android:text="13 Hari"
                     android:textColor="@color/black"
                     android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tvPanen"
                     app:layout_constraintStart_toEndOf="@id/ivGambarSayur"
-                    app:layout_constraintEnd_toStarOf="tvPanen"
-                    app:layout_constraintTop_toBottomOf="@+id/tvUmurTanaman"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@+id/tvUmurTanaman" />
 
                 <TextView
                     android:id="@+id/tvPanen"
