@@ -42,6 +42,7 @@ dependencies {
     implementation(libs.material)
     implementation("androidx.activity:activity-ktx:1.8.2")
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.activity)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

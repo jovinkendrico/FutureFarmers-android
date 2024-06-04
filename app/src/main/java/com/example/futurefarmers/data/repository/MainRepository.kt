@@ -12,6 +12,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class MainRepository(private val apiService: ApiService) {
+
+    //untuk tampilan dashboard
     fun getData(): LiveData<DataResponse> {
         val dashboardLiveData = MutableLiveData<DataResponse>()
 
@@ -29,42 +31,6 @@ class MainRepository(private val apiService: ApiService) {
         })
 
         return dashboardLiveData
-    }
-    fun getRelayConfig(): LiveData<ConfigResponse> {
-        val configLiveData = MutableLiveData<ConfigResponse>()
-
-        apiService.getRelayConfig().enqueue(object : Callback<ConfigResponse> {
-            override fun onResponse(call: Call<ConfigResponse>, response: Response<ConfigResponse>) {
-                val data = response.body()
-                if (response.isSuccessful && data != null) {
-                    configLiveData.value = data
-                }
-            }
-
-            override fun onFailure(call: Call<ConfigResponse>, t: Throwable) {
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
-            }
-        })
-
-        return configLiveData
-    }
-    fun getRelayStatus(): LiveData<RelayResponse> {
-        val statusLiveData = MutableLiveData<RelayResponse>()
-
-        apiService.getRelayStatus().enqueue(object : Callback<RelayResponse> {
-            override fun onResponse(call: Call<RelayResponse>, response: Response<RelayResponse>) {
-                val data = response.body()
-                if (response.isSuccessful && data != null) {
-                    statusLiveData.value = data
-                }
-            }
-
-            override fun onFailure(call: Call<RelayResponse>, t: Throwable) {
-                Log.e(TAG, "onFailure: ${t.message.toString()}")
-            }
-        })
-
-        return statusLiveData
     }
     companion object {
         const val TAG="MainRepository"
