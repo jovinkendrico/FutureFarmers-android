@@ -11,6 +11,7 @@ import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.PUT
 
@@ -18,18 +19,18 @@ interface ApiService {
 
     //dashboard
     @GET("api/v1/dashboard")
-    fun getData(): Call<DataResponse>
+    fun getData(@Header("Authorization") value: String): Call<DataResponse>
 
     //plant
     @GET("api/v1/plant")
-    fun getPlant(): Call<GetPlantResponse>
+    fun getPlant(@Header("Authorization") value: String): Call<GetPlantResponse>
     @POST("api/v1/plant")
-    fun postPlant(@Body raw: JsonObject): Call<PostPlantResponse>
+    fun postPlant(@Header("Authorization") value: String,@Body raw: JsonObject,): Call<PostPlantResponse>
 
     //relay config
     @GET("api/v1/getrelayconfig")
-    fun getRelayConfig(): Call<GetRelayConfigResponse>
+    fun getRelayConfig(@Header("Authorization") value: String): Call<GetRelayConfigResponse>
     @PUT("api/v1/updaterelayconfig")
-    fun updateRelayConfig(@Body raw: JsonObject): Call<UpdateRelayConfigResponse>
+    fun updateRelayConfig(@Header("Authorization") value: String,@Body raw: JsonObject): Call<UpdateRelayConfigResponse>
 
 }

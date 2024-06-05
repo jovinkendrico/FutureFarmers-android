@@ -40,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.login(param)
             loginViewModel.getLoginResponse().observe(this){
                 if (!it.error.toBoolean()){
+                    loginViewModel.saveSession(it.token.toString())
                     startActivity(Intent(this,MainActivity::class.java))
                 }
                 showToast(it.message.toString())

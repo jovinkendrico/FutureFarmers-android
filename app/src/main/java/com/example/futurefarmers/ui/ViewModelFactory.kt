@@ -6,12 +6,16 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.futurefarmers.data.repository.MainRepository
 import com.example.futurefarmers.`object`.Injection
 import com.example.futurefarmers.ui.main.MainViewModel
+import com.example.futurefarmers.ui.plant.PlantViewModel
 
 class ViewModelFactory private constructor(private val repository: MainRepository): ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(MainViewModel::class.java) -> {
                 MainViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(PlantViewModel::class.java) -> {
+                PlantViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

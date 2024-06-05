@@ -3,6 +3,7 @@ package com.example.futurefarmers.data.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.futurefarmers.data.preferences.UserPreference
 import com.example.futurefarmers.data.remote.auth.AuthService
 import com.example.futurefarmers.data.response.LoginResponse
 import com.google.gson.JsonObject
@@ -10,7 +11,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class AuthRepository(private val authService: AuthService) {
+class AuthRepository(private val userPreference: UserPreference, private val authService: AuthService) {
+
+    //save sesion
+    suspend fun saveSession(token: String) {
+        userPreference.saveSession(token)
+    }
 
     fun login(jsonObject: JsonObject): LiveData<LoginResponse> {
         val loginLiveData = MutableLiveData<LoginResponse>()
@@ -35,10 +41,11 @@ class AuthRepository(private val authService: AuthService) {
         @Volatile
         private var instance: AuthRepository? = null
         fun getInstance(
+            userPreference: UserPreference,
             authService: AuthService
         ): AuthRepository =
             instance ?: synchronized(this) {
-                instance ?: AuthRepository(authService)
+                instance ?: AuthRepository(userPreference,authService)
             }.also { instance = it }
     }
 }
