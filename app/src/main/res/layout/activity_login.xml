@@ -21,6 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
             <TextView
                 android:id="@+id/labelLogin"
                 android:layout_width="0dp"
@@ -30,9 +31,9 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/imageView"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/labelUsername"
@@ -45,24 +46,26 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/labelLogin" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilUsername"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Username"
                 android:layout_margin="10dp"
+                android:hint="Username"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/labelUsername"
-                app:hintEnabled="false">
+                app:layout_constraintTop_toBottomOf="@id/labelUsername">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="true"/>
+                    android:enabled="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:id="@+id/labelPassword"
                 android:layout_width="0dp"
@@ -71,25 +74,27 @@
                 android:text="Password"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                app:layout_constraintTop_toBottomOf="@id/tilUsername"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/tilUsername" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPassword"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Tanggal"
                 android:layout_margin="10dp"
+                android:hint="Tanggal"
+                app:hintEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/labelPassword"
-                app:hintEnabled="false">
+                app:layout_constraintTop_toBottomOf="@id/labelPassword">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="true"/>
+                    android:inputType="textPassword"
+                    android:enabled="true" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -110,6 +115,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilPassword"
                 app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/logo_2"
+                tools:srcCompat="@drawable/logo_2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
