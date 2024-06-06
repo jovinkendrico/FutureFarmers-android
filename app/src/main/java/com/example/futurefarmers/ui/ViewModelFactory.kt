@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.futurefarmers.data.repository.MainRepository
 import com.example.futurefarmers.`object`.Injection
+import com.example.futurefarmers.ui.config.ConfigViewModel
+import com.example.futurefarmers.ui.control.ControlViewModel
+import com.example.futurefarmers.ui.level.LevelViewModel
 import com.example.futurefarmers.ui.main.MainViewModel
 import com.example.futurefarmers.ui.plant.PlantViewModel
 import com.example.futurefarmers.ui.setting.SettingViewModel
@@ -20,6 +23,15 @@ class ViewModelFactory private constructor(private val repository: MainRepositor
             }
             modelClass.isAssignableFrom(SettingViewModel::class.java) -> {
                 SettingViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ConfigViewModel::class.java) -> {
+                ConfigViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(ControlViewModel::class.java) -> {
+                ControlViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(LevelViewModel::class.java) -> {
+                LevelViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
