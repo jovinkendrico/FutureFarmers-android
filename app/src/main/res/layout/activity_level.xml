@@ -145,7 +145,7 @@
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPhDown"
+                    android:id="@+id/etTempHigh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="true"/>
@@ -185,6 +185,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/btnUpdateLevel"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"

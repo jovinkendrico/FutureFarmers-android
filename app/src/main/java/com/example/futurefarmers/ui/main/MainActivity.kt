@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity() {
                     }
                     mainViewModel.getDataPlant().observe(this){
                         binding.tvSayur.text = it.nama.toString()
-                        binding.tvPanen.text = it.umur.toString()
-                        binding.tvUmur.text = it.tanggal.toString()
+                        binding.tvPanen.text = it.panen.toString() + " Hari"
+                        binding.tvUmur.text = it.umur.toString() + " Hari"
                     }
                 }
             }

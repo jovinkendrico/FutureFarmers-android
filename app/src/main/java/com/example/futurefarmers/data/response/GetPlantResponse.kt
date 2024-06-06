@@ -26,5 +26,8 @@ data class GetPlantResponse(
 	val error: String? = null,
 
 	@field:SerializedName("message")
-	val message: String? = null
+	val message: String? = null,
+
+	@field:SerializedName("panen")
+	val panen: Int? = null
 )

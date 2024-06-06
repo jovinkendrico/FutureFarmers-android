@@ -7,10 +7,12 @@ import com.example.futurefarmers.data.preferences.UserPreference
 import com.example.futurefarmers.data.remote.config.ApiService
 import com.example.futurefarmers.data.response.ConfigResponse
 import com.example.futurefarmers.data.response.DataResponse
+import com.example.futurefarmers.data.response.GetLevelConfigResponse
 import com.example.futurefarmers.data.response.GetPlantResponse
 import com.example.futurefarmers.data.response.GetRelayConfigResponse
 import com.example.futurefarmers.data.response.PostPlantResponse
 import com.example.futurefarmers.data.response.RelayResponse
+import com.example.futurefarmers.data.response.UpdateLevelConfigResponse
 import com.example.futurefarmers.data.response.UpdateRelayConfigResponse
 import com.google.gson.JsonObject
 import kotlinx.coroutines.flow.Flow
@@ -124,8 +126,44 @@ class MainRepository(private val userPreference: UserPreference, private val api
         return updateRelayConfigResponse
     }
 
+    //level config
+    fun getLevelConfig(token: String): LiveData<GetLevelConfigResponse> {
+        val getLevelConfigResponse = MutableLiveData<GetLevelConfigResponse>()
 
+        apiService.getLevelConfig(token).enqueue(object : Callback<GetLevelConfigResponse> {
+            override fun onResponse(call: Call<GetLevelConfigResponse>, response: Response<GetLevelConfigResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    getLevelConfigResponse.value = data
+                }
+            }
 
+            override fun onFailure(call: Call<GetLevelConfigResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return getLevelConfigResponse
+    }
+
+    fun updateLevelConfig(token: String, jsonObject: JsonObject): LiveData<UpdateLevelConfigResponse> {
+        val updateLevelConfigResponse = MutableLiveData<UpdateLevelConfigResponse>()
+
+        apiService.updateLevelConfig(token, jsonObject).enqueue(object : Callback<UpdateLevelConfigResponse> {
+            override fun onResponse(call: Call<UpdateLevelConfigResponse>, response: Response<UpdateLevelConfigResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateLevelConfigResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateLevelConfigResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateLevelConfigResponse
+    }
 
     companion object {
         const val TAG="MainRepository"

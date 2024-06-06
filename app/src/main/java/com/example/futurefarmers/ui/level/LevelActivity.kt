@@ -2,6 +2,8 @@ package com.example.futurefarmers.ui.level
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,8 @@ import com.example.futurefarmers.databinding.ActivityLevelBinding
 import com.example.futurefarmers.ui.ViewModelFactory
 import com.example.futurefarmers.ui.config.ConfigViewModel
 import com.example.futurefarmers.ui.login.LoginActivity
+import com.example.futurefarmers.ui.setting.SettingActivity
+import com.google.gson.JsonObject
 
 class LevelActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLevelBinding
@@ -34,7 +38,48 @@ class LevelActivity : AppCompatActivity() {
             if(it == ""){
                 startActivity(Intent(this, LoginActivity::class.java))
                 finish()
+            }else{
+                token?.let {
+                    levelViewModel.getLevel(it)
+                    levelViewModel.getLevelResponse().observe(this){
+                        binding.etPhLow.text = it.phLow.toString().toEditable()
+                        binding.etPhHigh.text = it.phHigh.toString().toEditable()
+                        binding.etTempLow.text = it.temperatureLow.toString().toEditable()
+                        binding.etTempHigh.text = it.temperatureHigh.toString().toEditable()
+                        binding.etNutrisi.text = it.tds.toString().toEditable()
+                    }
+                }
+            }
+        }
+        binding.closeButton.setOnClickListener{
+            startActivity(Intent(this, SettingActivity::class.java))
+        }
+        binding.btnUpdateLevel.setOnClickListener {
+            val phLow = binding.etPhLow.text.toString().toFloat()
+            val phHigh= binding.etPhHigh.text.toString().toFloat()
+            val tempLow = binding.etTempLow.text.toString().toFloat()
+            val tempHigh = binding.etTempHigh.text.toString().toFloat()
+            val tds = binding.etNutrisi.text.toString().toFloat()
+
+            val param = JsonObject().apply {
+                addProperty("ph_high", phHigh)
+                addProperty("ph_low", phLow)
+                addProperty("tds", tds)
+                addProperty("temp_high", tempHigh)
+                addProperty("temp_low", tempLow)
+            }
+            token?.let { it1 -> levelViewModel.updateLevel(it1,param) }
+            levelViewModel.getUpdateLevelResponse().observe(this){
+                if (!it.error.toBoolean()){
+                    showToast("Timeout Configuration Berhasil Disimpan")
+                }else{
+                    showToast("Timeout Configuration Gagal Disimpan")
+                }
             }
         }
     }
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+    private fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 }

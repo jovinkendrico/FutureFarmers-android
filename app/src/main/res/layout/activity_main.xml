@@ -12,8 +12,7 @@
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:backgroundTint="@color/background"
-        >
+        android:backgroundTint="@color/background">
 
 
         <TextView
@@ -42,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="20dp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvNama">
@@ -147,7 +146,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/cvKelembapan"
             app:layout_constraintTop_toBottomOf="@+id/cvSedangMenanam">
@@ -185,7 +183,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="5dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cvSuhu"
             app:layout_constraintTop_toBottomOf="@+id/cvSedangMenanam">
@@ -222,7 +219,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cvSuhu">
@@ -262,7 +258,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="5dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/cvKelembapan"
             app:layout_constraintTop_toBottomOf="@+id/cvTingkatKeasaman">
@@ -300,7 +295,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/cvKesehatan"
             app:layout_constraintTop_toBottomOf="@+id/cvTingkatKeasaman">
