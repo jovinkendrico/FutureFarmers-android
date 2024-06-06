@@ -8,8 +8,10 @@ import com.example.futurefarmers.data.remote.config.ApiService
 import com.example.futurefarmers.data.response.ConfigResponse
 import com.example.futurefarmers.data.response.DataResponse
 import com.example.futurefarmers.data.response.GetPlantResponse
+import com.example.futurefarmers.data.response.GetRelayConfigResponse
 import com.example.futurefarmers.data.response.PostPlantResponse
 import com.example.futurefarmers.data.response.RelayResponse
+import com.example.futurefarmers.data.response.UpdateRelayConfigResponse
 import com.google.gson.JsonObject
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
@@ -83,6 +85,46 @@ class MainRepository(private val userPreference: UserPreference, private val api
 
         return getPlantResponse
     }
+
+    fun getRelayConfig(token: String): LiveData<GetRelayConfigResponse> {
+        val getRelayConfigResponse = MutableLiveData<GetRelayConfigResponse>()
+
+        apiService.getRelayConfig(token).enqueue(object : Callback<GetRelayConfigResponse> {
+            override fun onResponse(call: Call<GetRelayConfigResponse>, response: Response<GetRelayConfigResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    getRelayConfigResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<GetRelayConfigResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return getRelayConfigResponse
+    }
+
+    fun updateRelayConfig(token: String, jsonObject: JsonObject): LiveData<UpdateRelayConfigResponse> {
+        val updateRelayConfigResponse = MutableLiveData<UpdateRelayConfigResponse>()
+
+        apiService.updateRelayConfig(token, jsonObject).enqueue(object : Callback<UpdateRelayConfigResponse> {
+            override fun onResponse(call: Call<UpdateRelayConfigResponse>, response: Response<UpdateRelayConfigResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayConfigResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayConfigResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayConfigResponse
+    }
+
+
 
 
     companion object {
