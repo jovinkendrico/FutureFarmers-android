@@ -13,9 +13,6 @@ import com.example.futurefarmers.R
 import com.example.futurefarmers.databinding.ActivityConfigBinding
 import com.example.futurefarmers.ui.ViewModelFactory
 import com.example.futurefarmers.ui.login.LoginActivity
-import com.example.futurefarmers.ui.main.MainActivity
-import com.example.futurefarmers.ui.main.MainViewModel
-import com.example.futurefarmers.ui.setting.SettingActivity
 import com.google.gson.JsonObject
 
 class ConfigActivity : AppCompatActivity() {
@@ -54,7 +51,7 @@ class ConfigActivity : AppCompatActivity() {
             }
         }
         binding.closeButton.setOnClickListener{
-            startActivity(Intent(this,SettingActivity::class.java))
+           finish()
         }
         binding.btnUpdateConfig.setOnClickListener {
             val phUp = binding.etPhUp.text.toString().toFloat()

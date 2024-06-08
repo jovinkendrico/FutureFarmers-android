@@ -53,4 +53,5 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation("androidx.fragment:fragment-ktx:1.7.1")
 }

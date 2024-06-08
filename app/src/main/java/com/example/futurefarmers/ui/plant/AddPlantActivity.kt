@@ -61,7 +61,7 @@ class AddPlantActivity : AppCompatActivity() {
             }
         }
         binding.closeButton.setOnClickListener{
-            startActivity(Intent(this,MainActivity::class.java))
+            finish()
         }
     }
     private fun showToast(message: String) {

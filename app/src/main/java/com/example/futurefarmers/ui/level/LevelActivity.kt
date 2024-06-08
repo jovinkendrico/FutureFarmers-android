@@ -12,9 +12,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.futurefarmers.R
 import com.example.futurefarmers.databinding.ActivityLevelBinding
 import com.example.futurefarmers.ui.ViewModelFactory
-import com.example.futurefarmers.ui.config.ConfigViewModel
 import com.example.futurefarmers.ui.login.LoginActivity
-import com.example.futurefarmers.ui.setting.SettingActivity
 import com.google.gson.JsonObject
 
 class LevelActivity : AppCompatActivity() {
@@ -52,7 +50,7 @@ class LevelActivity : AppCompatActivity() {
             }
         }
         binding.closeButton.setOnClickListener{
-            startActivity(Intent(this, SettingActivity::class.java))
+           finish()
         }
         binding.btnUpdateLevel.setOnClickListener {
             val phLow = binding.etPhLow.text.toString().toFloat()
@@ -71,9 +69,9 @@ class LevelActivity : AppCompatActivity() {
             token?.let { it1 -> levelViewModel.updateLevel(it1,param) }
             levelViewModel.getUpdateLevelResponse().observe(this){
                 if (!it.error.toBoolean()){
-                    showToast("Timeout Configuration Berhasil Disimpan")
+                    showToast("Level Configuration Berhasil Disimpan")
                 }else{
-                    showToast("Timeout Configuration Gagal Disimpan")
+                    showToast("Level Configuration Gagal Disimpan")
                 }
             }
         }

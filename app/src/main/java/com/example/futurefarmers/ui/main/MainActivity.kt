@@ -7,15 +7,13 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import com.example.futurefarmers.ui.control.ConfigFragment
 import com.example.futurefarmers.R
-import com.example.futurefarmers.data.response.DataResponse
+import com.example.futurefarmers.ui.setting.SettingFragment
 import com.example.futurefarmers.databinding.ActivityMainBinding
 import com.example.futurefarmers.ui.ViewModelFactory
-import com.example.futurefarmers.ui.config.ConfigActivity
-import com.example.futurefarmers.ui.control.ControlActivity
 import com.example.futurefarmers.ui.login.LoginActivity
-import com.example.futurefarmers.ui.plant.AddPlantActivity
-import com.example.futurefarmers.ui.setting.SettingActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -23,62 +21,56 @@ class MainActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
     private var token: String? = null
+    lateinit var homeFragment: HomeFragment
+    lateinit var configFragment: ConfigFragment
+    lateinit var settingFragment: SettingFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        homeFragment = HomeFragment()
+        configFragment = ConfigFragment()
+        settingFragment = SettingFragment()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+
+        loadFragment(HomeFragment())
         mainViewModel.getSession().observe(this){
             token = "Bearer $it"
-            if(it == ""){
-                startActivity(Intent(this,LoginActivity::class.java))
+            if(it == "") {
+                startActivity(Intent(this, LoginActivity::class.java))
                 finish()
-            }else{
-                token?.let {
-                    mainViewModel.tanaman(it)
-                    mainViewModel.dashboard(it)
-                    mainViewModel.getDataDashboard().observe(this) {
-                        updateUI(it)
-                    }
-                    mainViewModel.getDataPlant().observe(this){
-                        binding.tvSayur.text = it.nama.toString()
-                        binding.tvPanen.text = it.panen.toString() + " Hari"
-                        binding.tvUmur.text = it.umur.toString() + " Hari"
-                    }
-                }
             }
         }
-        binding.cvSedangMenanam.setOnClickListener{
-            startActivity(Intent(this,AddPlantActivity::class.java))
-        }
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener() { menuItem ->
-            when (menuItem.itemId) {
-                R.id.navigation_home-> {
-                    startActivity(Intent(this, MainActivity::class.java))
+        binding.bottomNavigationView.setOnItemSelectedListener  {
+            try {
+                when (it.itemId) {
+                    R.id.navigation_home -> {
+                        loadFragment(homeFragment)
+                        true
+                    }
+                    R.id.navigation_control -> {
+                        loadFragment(configFragment)
+                        true
+                    } else -> {
+                    R.id.navigation_setting
+                    loadFragment(settingFragment)
                     true
                 }
-                R.id.navigation_control -> {
-                    startActivity(Intent(this, ControlActivity::class.java))
-                    true
                 }
-                R.id.navigation_setting->{
-                    startActivity(Intent(this,SettingActivity::class.java))
-                    true
-                }
-                else -> false
+            } catch (e : Exception) {
+                throw e
             }
         }
     }
-    private fun updateUI(data: DataResponse) {
-        // Update UI with the latest data
-        binding.tvAngkaSuhu.text = data.suhu.toString()
-        binding.tvAngkaKelembapan.text = data.kelembapan.toString()
-        binding.tvAngkaTingkatKeasaman.text = data.ph.toString()
-        binding.tvAngkaKesehatan.text = data.tds.toString()
+    private fun loadFragment(fragment: Fragment) {
+
+        if (fragment != null) {
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(com.google.android.material.R.id.container, fragment)
+            transaction.commit()
+        }
     }
+
 }
