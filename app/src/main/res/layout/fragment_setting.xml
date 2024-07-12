@@ -46,7 +46,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/ivHistory" />
 
 
         <ImageView
@@ -79,13 +79,14 @@
             android:id="@+id/tvRelayConfig"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:text="Timeout Configuration"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView3"
-            app:layout_constraintTop_toBottomOf="@+id/tvConfig" />
+            app:layout_constraintTop_toTopOf="@+id/imageView3" />
 
         <TextView
             android:id="@+id/tvLogout"
@@ -116,7 +117,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/baseline_settings_24"
             app:layout_constraintEnd_toStartOf="@id/tvLevelConfig"
             app:layout_constraintStart_toStartOf="parent"
@@ -124,17 +125,46 @@
             app:srcCompat="@drawable/baseline_settings_24"
             app:tint="@color/green" />
 
+        <ImageView
+            android:id="@+id/ivHistory"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/baseline_history_24"
+            app:layout_constraintEnd_toStartOf="@id/tvRelayHistory"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:srcCompat="@drawable/baseline_settings_24"
+            app:tint="@color/green" />
+
         <TextView
             android:id="@+id/tvLevelConfig"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+
+            android:layout_marginEnd="10dp"
             android:text="Level Configuration"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintTop_toBottomOf="@id/deskripsiRelayConfig" />
+            app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+        <TextView
+            android:id="@+id/tvRelayHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+
+            android:layout_marginEnd="10dp"
+            android:text="Relay History"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivHistory"
+            app:layout_constraintTop_toTopOf="@+id/ivHistory" />
 
         <TextView
             android:id="@+id/deskripsiLevelConfig"
@@ -147,6 +177,16 @@
             app:layout_constraintStart_toEndOf="@+id/imageView4"
             app:layout_constraintTop_toBottomOf="@+id/tvLevelConfig" />
 
+        <TextView
+            android:id="@+id/deskripsiRelayHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="Lihat Relay History"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivHistory"
+            app:layout_constraintTop_toBottomOf="@+id/tvRelayHistory" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

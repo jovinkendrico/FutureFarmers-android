@@ -6,6 +6,7 @@ import androidx.lifecycle.asLiveData
 import com.example.futurefarmers.data.repository.MainRepository
 import com.example.futurefarmers.data.response.DataResponse
 import com.example.futurefarmers.data.response.GetPlantResponse
+import io.reactivex.schedulers.Schedulers
 
 class MainViewModel(private val repository: MainRepository): ViewModel(){
     companion object{
@@ -14,6 +15,7 @@ class MainViewModel(private val repository: MainRepository): ViewModel(){
 
     private lateinit var dataPlant: LiveData<GetPlantResponse>
     private lateinit var dataDashboard: LiveData<DataResponse>
+    private lateinit var dataDashboardObservable: LiveData<DataResponse>
     fun dashboard(token: String){
         dataDashboard = repository.getData(token)
     }
@@ -29,5 +31,8 @@ class MainViewModel(private val repository: MainRepository): ViewModel(){
     }
     fun getSession(): LiveData<String>{
         return repository.getSession().asLiveData()
+    }
+    fun getDataDashboardObservable(): LiveData<DataResponse> {
+        return dataDashboardObservable
     }
 }

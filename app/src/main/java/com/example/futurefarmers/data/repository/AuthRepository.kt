@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.futurefarmers.data.preferences.UserPreference
 import com.example.futurefarmers.data.remote.auth.AuthService
 import com.example.futurefarmers.data.response.LoginResponse
+import com.example.futurefarmers.data.response.RegisterResponse
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,11 +31,29 @@ class AuthRepository(private val userPreference: UserPreference, private val aut
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                Log.e(MainRepository.TAG, "onFailure: ${t.message.toString()}")
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
             }
         })
 
         return loginLiveData
+    }
+    fun register(jsonObject: JsonObject): LiveData<RegisterResponse> {
+        val registerLiveData = MutableLiveData<RegisterResponse>()
+
+        authService.register(jsonObject).enqueue(object : Callback<RegisterResponse> {
+            override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    registerLiveData.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return registerLiveData
     }
     companion object {
         const val TAG="AuthRepository"

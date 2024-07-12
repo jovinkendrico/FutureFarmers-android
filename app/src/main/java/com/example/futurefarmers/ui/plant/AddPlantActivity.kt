@@ -1,5 +1,6 @@
 package com.example.futurefarmers.ui.plant
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.example.futurefarmers.ui.login.LoginActivity
 import com.example.futurefarmers.ui.login.LoginViewModel
 import com.example.futurefarmers.ui.main.MainActivity
 import com.google.gson.JsonObject
+import java.util.Calendar
 
 class AddPlantActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddPlantBinding
@@ -33,6 +35,23 @@ class AddPlantActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+//        binding.etTanggal.setOnClickListener {
+//            // Get current date
+//            val calendar = Calendar.getInstance()
+//            val year = calendar.get(Calendar.YEAR)
+//            val month = calendar.get(Calendar.MONTH)
+//            val day = calendar.get(Calendar.DAY_OF_MONTH)
+//
+//            // Date Picker Dialog
+//            val datePickerDialog = DatePickerDialog(this,
+//                { view, year1, monthOfYear, dayOfMonth ->
+//                    // Set date to TextInputEditText
+//                    binding.etTanggal.setText("$year1-${monthOfYear + 1}-$dayOfMonth")
+//                    binding.etWaktuPanen.requestFocus()
+//                }, year, month, day)
+//
+//            datePickerDialog.show()
+//        }
         plantViewModel.getSession().observe(this){
             token = it
             if(token == ""){

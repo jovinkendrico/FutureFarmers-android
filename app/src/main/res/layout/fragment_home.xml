@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.HomeFragment"
-    android:backgroundTint="@color/background">
-
-
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:clipToPadding="false"
+        tools:context=".ui.main.HomeFragment"
+        android:backgroundTint="@color/background">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/background"
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp">
+            android:paddingBottom="90dp">
 
 
             <TextView
                 android:id="@+id/tvSelamatDatang"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:text="Selamat Datang!"
                 android:textColor="@color/abu"
                 android:textSize="16sp"
@@ -32,6 +34,8 @@
                 android:id="@+id/tvNama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:text="Ayo Pantau Tumbuh si Hidro"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -43,15 +47,20 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                app:cardCornerRadius="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
 
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvNama">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
 
                     <TextView
                         android:id="@+id/tvSedangMenanam"
@@ -67,21 +76,22 @@
 
                     <ImageView
                         android:id="@+id/ivGambarSayur"
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
+                        android:layout_width="135dp"
+                        android:layout_height="134dp"
                         android:layout_margin="10dp"
+                        android:src="@drawable/lettuce"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/tvSayur"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvSedangMenanam"
-                        tools:srcCompat="@tools:sample/avatars" />
+                         />
 
                     <TextView
                         android:id="@+id/tvSayur"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="10dp"
                         android:textColor="@color/black"
                         android:textSize="32sp"
                         android:textStyle="bold"
@@ -95,9 +105,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-
+                        android:text="Umur"
                         android:textColor="@color/abu"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toStartOf="@id/tvPanenDalam"
                         app:layout_constraintStart_toEndOf="@+id/ivGambarSayur"
                         app:layout_constraintTop_toBottomOf="@+id/tvSayur" />
@@ -107,37 +117,61 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
-
+                        android:text="Panen Dalam"
                         android:textColor="@color/abu"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/tvUmurTanaman"
                         app:layout_constraintTop_toBottomOf="@+id/tvSayur" />
 
                     <TextView
                         android:id="@+id/tvUmur"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="5dp"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/tvPanen"
+                        app:layout_constraintEnd_toStartOf="@+id/tvHariUmur"
                         app:layout_constraintStart_toEndOf="@id/ivGambarSayur"
                         app:layout_constraintTop_toBottomOf="@+id/tvUmurTanaman" />
 
                     <TextView
                         android:id="@+id/tvPanen"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        android:layout_marginEnd="5dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/tvHari"
                         app:layout_constraintStart_toStartOf="@+id/tvPanenDalam"
                         app:layout_constraintTop_toBottomOf="@+id/tvPanenDalam" />
+                    <TextView
+                        android:id="@+id/tvHari"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:text="Hari"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvPanen"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPanenDalam" />
+
+                    <TextView
+                        android:id="@+id/tvHariUmur"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Hari"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/tvUmurTanaman"
+                        app:layout_constraintStart_toEndOf="@id/tvUmur"
+                        app:layout_constraintTop_toBottomOf="@+id/tvUmurTanaman" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -146,7 +180,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="5dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toStartOf="@id/cvKelembapan"
                 app:layout_constraintStart_toStartOf="parent"
@@ -154,7 +189,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
 
                     <TextView
                         android:id="@+id/tvSuhu"
@@ -167,35 +204,105 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+
+                    <ProgressBar
+                        android:id="@+id/progressBarSuhu"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_marginBottom="10dp"
+                        android:indeterminate="false"
+                        android:max="500"
+                        android:progress="0"
+                        android:background="@drawable/stats_progress_drawable"
+                        android:progressDrawable="@drawable/stats_progress"
+                        android:scaleX="1"
+                        android:scaleY="1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.506"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvSuhu"
+                        app:layout_constraintVertical_bias="0.0" />
+
                     <TextView
                         android:id="@+id/tvAngkaSuhu"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginBottom="10dp"
-                        android:text="30"
+                        android:text=""
+                        android:textAlignment="textEnd"
                         android:textColor="@color/black"
-                        android:textSize="64sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvSuhu" />
+                        android:textSize="28sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBarSuhu"
+                        app:layout_constraintEnd_toStartOf="@+id/tvDerajat"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/progressBarSuhu"
+                        app:layout_constraintTop_toTopOf="@+id/progressBarSuhu" />
+
+                    <TextView
+                        android:id="@+id/tvDerajat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="°"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="28sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBarSuhu"
+                        app:layout_constraintEnd_toStartOf="@id/tvDerajatc"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/tvAngkaSuhu"
+                        app:layout_constraintTop_toTopOf="@+id/progressBarSuhu" />
+
+                    <TextView
+                        android:id="@+id/tvDerajatc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="c"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/abu"
+                        android:textSize="28sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBarSuhu"
+
+                        app:layout_constraintEnd_toEndOf="@+id/progressBarSuhu"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/tvDerajat"
+                        app:layout_constraintTop_toTopOf="@+id/progressBarSuhu" />
+                    <ImageView
+                        android:id="@+id/imageView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/temp"
+                        app:layout_constraintBottom_toTopOf="@+id/progressBarSuhu"
+                        app:layout_constraintStart_toEndOf="@+id/tvSuhu"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvKelembapan"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
                 app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="@+id/cvSuhu"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/cvSuhu"
-                app:layout_constraintTop_toBottomOf="@+id/cvSedangMenanam">
+                app:layout_constraintTop_toBottomOf="@id/cvSedangMenanam">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
 
                     <TextView
                         android:id="@+id/tvKelembapan"
@@ -207,19 +314,68 @@
                         android:textSize="20sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+                    <ProgressBar
+                        android:id="@+id/progressBarKelembapan"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_marginBottom="10dp"
+                        android:indeterminate="false"
+                        android:max="90"
+                        android:progress="0"
+                        android:background="@drawable/stats_progress_drawable"
+
+                        android:progressDrawable="@drawable/stats_progress"
+                        android:scaleX="1"
+                        android:scaleY="1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvKelembapan"
+                        app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
                         android:id="@+id/tvAngkaKelembapan"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginBottom="10dp"
-                        android:text="70"
+                        android:text=""
+                        android:textAlignment="textEnd"
                         android:textColor="@color/black"
-                        android:textSize="64sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvKelembapan" />
+                        android:textSize="28sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBarKelembapan"
+                        app:layout_constraintEnd_toStartOf="@id/tvKelembapanPersen"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/progressBarKelembapan"
+                        app:layout_constraintTop_toTopOf="@+id/progressBarKelembapan" />
+
+                    <TextView
+                        android:id="@+id/tvKelembapanPersen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="45dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="%"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/abu"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBarKelembapan"
+                        app:layout_constraintEnd_toEndOf="@+id/progressBarKelembapan"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@id/tvAngkaKelembapan"
+                        app:layout_constraintTop_toTopOf="@+id/progressBarKelembapan" />
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/kelembapan"
+                        app:layout_constraintBottom_toTopOf="@+id/progressBarKelembapan"
+                        app:layout_constraintStart_toEndOf="@+id/tvKelembapan"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
@@ -228,6 +384,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -235,7 +393,9 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
 
                     <TextView
                         android:id="@+id/tvTingkatKeasaman"
@@ -250,73 +410,189 @@
 
                     <TextView
                         android:id="@+id/tvAngkaTingkatKeasaman"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="7.4"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginBottom="10dp"
+
                         android:textColor="@color/black"
-                        android:textSize="64sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:textSize="56sp"
+                        app:layout_constraintBottom_toTopOf="@id/progressBarPh"
+                        app:layout_constraintEnd_toStartOf="@+id/tvAngkaPh"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvTingkatKeasaman" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvKesehatan"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="5dp"
-                app:cardCornerRadius="20dp"
-                app:layout_constraintEnd_toStartOf="@id/cvKelembapan"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cvTingkatKeasaman">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
 
                     <TextView
-                        android:id="@+id/tvKesehatan"
+                        android:id="@+id/tvAngkaPh"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:text="Kesehatan"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginTop="20dp"
+                        android:text="pH"
                         android:textColor="@color/abu"
-                        android:textSize="20sp"
+                        android:textSize="32sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvAngkaTingkatKeasaman"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tvAngkaTingkatKeasaman"
+                        app:layout_constraintTop_toTopOf="@+id/tvAngkaTingkatKeasaman" />
+                    <ProgressBar
+                        android:id="@+id/progressBarPh"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+
+                        android:max="140"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/stats_progress_bar"
+                        app:layout_constraintBottom_toTopOf="@id/tv0"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAngkaTingkatKeasaman" />
+
+                    <ImageView
+                        android:id="@+id/imageView7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:src="@drawable/ph"
+                        app:layout_constraintBottom_toTopOf="@+id/tvAngkaTingkatKeasaman"
+                        app:layout_constraintStart_toEndOf="@+id/tvTingkatKeasaman"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/tvAngkaKesehatan"
-                        android:layout_width="0dp"
+                        android:id="@+id/tv0"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="20dp"
                         android:layout_marginBottom="10dp"
-                        android:text="30"
-                        android:textColor="@color/black"
-                        android:textSize="64sp"
+                        android:text="0"
+                        android:textColor="@color/abu"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvKesehatan" />
+                        app:layout_constraintTop_toBottomOf="@+id/progressBarPh"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/tv14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:text="14"
+
+                        android:textColor="@color/abu"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/progressBarPh"
+                        app:layout_constraintVertical_bias="0.0" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
+
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:id="@+id/cvKesehatan"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginEnd="5dp"-->
+<!--                app:cardCornerRadius="20dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/cvNutrisi"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/cvTingkatKeasaman">-->
+
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingStart="10dp"-->
+<!--                    android:paddingEnd="10dp">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvKesehatan"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:text="Kesehatan"-->
+<!--                        android:textColor="@color/abu"-->
+<!--                        android:textSize="20sp"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                    <ProgressBar-->
+<!--                        android:id="@+id/progressBarKesehatan"-->
+<!--                        style="?android:attr/progressBarStyleHorizontal"-->
+<!--                        android:layout_width="140dp"-->
+<!--                        android:layout_height="140dp"-->
+<!--                        android:layout_marginBottom="10dp"-->
+<!--                        android:indeterminate="false"-->
+<!--                        android:max="100"-->
+<!--                        android:progress="0"-->
+<!--                        android:background="@drawable/stats_progress_drawable"-->
+
+<!--                        android:progressDrawable="@drawable/stats_progress"-->
+<!--                        android:scaleX="1"-->
+<!--                        android:scaleY="1"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toEndOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        app:layout_constraintTop_toBottomOf="@+id/tvKesehatan"-->
+<!--                        app:layout_constraintVertical_bias="0.0" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvAngkaKesehatan"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text=""-->
+<!--                        android:textAlignment="textEnd"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="28sp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/progressBarKesehatan"-->
+<!--                        app:layout_constraintEnd_toStartOf="@id/tvAngkaKesehatanPersen"-->
+<!--                        app:layout_constraintHorizontal_bias="0.0"-->
+<!--                        app:layout_constraintStart_toStartOf="@+id/progressBarKesehatan"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/progressBarKesehatan" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvAngkaKesehatanPersen"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginEnd="40dp"-->
+<!--                        android:text="%"-->
+<!--                        android:textAlignment="textStart"-->
+<!--                        android:textColor="@color/gray"-->
+<!--                        android:textSize="20sp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="@+id/progressBarKesehatan"-->
+<!--                        app:layout_constraintEnd_toEndOf="@+id/progressBarKesehatan"-->
+<!--                        app:layout_constraintHorizontal_bias="0.0"-->
+<!--                        app:layout_constraintStart_toEndOf="@id/tvAngkaKesehatan"-->
+<!--                        app:layout_constraintTop_toTopOf="@+id/progressBarKesehatan" />-->
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvNutrisi"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/cvKesehatan"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cvTingkatKeasaman">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
 
                     <TextView
                         android:id="@+id/tvNutrisi"
@@ -329,19 +605,70 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <ProgressBar
+                        android:id="@+id/progressBarNutrisi"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_marginBottom="10dp"
+                        android:indeterminate="false"
+                        android:max="1200"
+                        android:progress="75"
+                        android:progressDrawable="@drawable/stats_progress"
+                        android:scaleX="1"
+                        android:scaleY="1"
+                        android:background="@drawable/stats_progress_drawable"
+
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.493"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvNutrisi"
+                        app:layout_constraintVertical_bias="1.0" />
+
                     <TextView
                         android:id="@+id/tvAngkaNutrisi"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:text="50"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:text=""
+                        android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="64sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvNutrisi" />
+                        android:textSize="28sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/progressBarNutrisi"
+                        app:layout_constraintEnd_toEndOf="@+id/progressBarNutrisi"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/progressBarNutrisi"
+                        app:layout_constraintTop_toTopOf="@+id/progressBarNutrisi"
+                        app:layout_constraintVertical_bias="0.378" />
+
+                    <TextView
+                        android:id="@+id/tvAngkaNutrisiPpm"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+
+                        android:text="ppm"
+                        android:textAlignment="center"
+                        android:textColor="@color/abu"
+                        android:textSize="20sp"
+
+                        app:layout_constraintEnd_toEndOf="@+id/tvAngkaNutrisi"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tvAngkaNutrisi"
+                        app:layout_constraintTop_toBottomOf="@+id/tvAngkaNutrisi" />
+
+                    <ImageView
+                        android:id="@+id/imageView8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/nutrisi"
+                        app:layout_constraintBottom_toBottomOf="@+id/tvNutrisi"
+                        app:layout_constraintStart_toEndOf="@+id/tvNutrisi"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-</FrameLayout>
+    </androidx.core.widget.NestedScrollView>

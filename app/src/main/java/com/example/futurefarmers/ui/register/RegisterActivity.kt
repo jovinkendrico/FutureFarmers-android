@@ -1,4 +1,4 @@
-package com.example.futurefarmers.ui.login
+package com.example.futurefarmers.ui.register
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,20 +10,21 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.futurefarmers.R
 import com.example.futurefarmers.databinding.ActivityLoginBinding
+import com.example.futurefarmers.databinding.ActivityRegisterBinding
 import com.example.futurefarmers.ui.AuthModelFactory
+import com.example.futurefarmers.ui.login.LoginActivity
+import com.example.futurefarmers.ui.login.LoginViewModel
 import com.example.futurefarmers.ui.main.MainActivity
-import com.example.futurefarmers.ui.register.RegisterActivity
 import com.google.gson.JsonObject
 
-class LoginActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityLoginBinding
-    private val loginViewModel by viewModels<LoginViewModel> {
+class RegisterActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRegisterBinding
+    private val registerViewModel by viewModels<RegisterViewModel> {
         AuthModelFactory.getInstance(this)
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -31,24 +32,22 @@ class LoginActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        binding.btnLogin.setOnClickListener{
+        binding.btnRegister.setOnClickListener{
+            var name = binding.etName.text.toString()
             var username = binding.etUsername.text.toString()
             var password = binding.etPassword.text.toString()
             val param = JsonObject().apply {
+                addProperty("name", name)
                 addProperty("username", username)
                 addProperty("password", password)
             }
-            loginViewModel.login(param)
-            loginViewModel.getLoginResponse().observe(this){
+            registerViewModel.register(param)
+            registerViewModel.getRegisterResponse().observe(this){
                 if (!it.error.toBoolean()){
-                    loginViewModel.saveSession(it.token.toString())
-                    startActivity(Intent(this,MainActivity::class.java))
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    showToast("Register Berhasil")
                 }
-                showToast(it.message.toString())
             }
-        }
-        binding.btnRegister.setOnClickListener{
-            startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
     private fun showToast(message: String) {

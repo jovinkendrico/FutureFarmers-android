@@ -7,12 +7,16 @@ import com.example.futurefarmers.data.repository.AuthRepository
 import com.example.futurefarmers.`object`.Injection
 import com.example.futurefarmers.ui.login.LoginViewModel
 import com.example.futurefarmers.ui.main.MainViewModel
+import com.example.futurefarmers.ui.register.RegisterViewModel
 
 class AuthModelFactory private constructor(private val repository: AuthRepository): ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
+                RegisterViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

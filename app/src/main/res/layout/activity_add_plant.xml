@@ -26,7 +26,8 @@
                 android:id="@+id/labelTambahTanaman"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
                 android:text="Tambah Tanaman"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -39,7 +40,9 @@
                 android:id="@+id/labelTanaman"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
                 android:text="Tanaman"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -51,7 +54,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Tanaman"
-                android:layout_margin="10dp"
+                android:background="@drawable/rounded_background"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/labelTanaman"
@@ -59,6 +66,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etTanaman"
+                    android:background="@drawable/rounded_background"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="true"/>
@@ -68,7 +77,9 @@
                 android:id="@+id/labelTanggal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
                 android:text="Tanggal"
                 android:textColor="@color/black"
                 android:textSize="20sp"
@@ -80,7 +91,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Tanggal"
-                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rounded_background"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/labelTanggal"
@@ -90,15 +105,21 @@
                     android:id="@+id/etTanggal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="true"/>
+                    android:background="@drawable/rounded_background"
+                    android:inputType="date" />
 
             </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:id="@+id/labelWaktuPanen"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+
                 android:text="Waktu Panen"
+
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 app:layout_constraintTop_toBottomOf="@id/tilTanggal"
@@ -109,7 +130,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:hint="Waktu Panen"
-                android:layout_margin="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/rounded_background"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/labelWaktuPanen"
@@ -117,6 +142,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etWaktuPanen"
+                    android:background="@drawable/rounded_background"
+                    android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:enabled="true"/>
@@ -128,12 +155,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:layout_margin="10dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 android:backgroundTint="@color/green"
                 android:text="Simpan"
                 android:textColor="@color/black"
                 android:textSize="16sp"
+                android:background="@drawable/rounded_button"
 
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -144,8 +173,9 @@
                 android:id="@+id/closeButton"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:backgroundTint="@color/white"
 
-                android:layout_margin="10dp"
+                android:layout_margin="20dp"
                 android:src="@drawable/baseline_close_24"
                 app:layout_constraintBottom_toTopOf="@+id/labelTanaman"
                 app:layout_constraintEnd_toEndOf="parent"

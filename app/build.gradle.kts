@@ -54,4 +54,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation("androidx.datastore:datastore-preferences:1.1.1")
     implementation("androidx.fragment:fragment-ktx:1.7.1")
+    implementation("io.reactivex.rxjava2:rxjava:2.1.6")
+    implementation("io.reactivex.rxjava2:rxandroid:2.0.1")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+    implementation("androidx.paging:paging-runtime:3.3.0")
 }

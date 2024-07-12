@@ -14,11 +14,15 @@ import com.example.futurefarmers.data.response.PostPlantResponse
 import com.example.futurefarmers.data.response.RelayResponse
 import com.example.futurefarmers.data.response.UpdateLevelConfigResponse
 import com.example.futurefarmers.data.response.UpdateRelayConfigResponse
+import com.example.futurefarmers.data.response.UpdateRelayResponse
 import com.google.gson.JsonObject
+import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.concurrent.TimeUnit
 
 class MainRepository(private val userPreference: UserPreference, private val apiService: ApiService) {
 
@@ -165,6 +169,188 @@ class MainRepository(private val userPreference: UserPreference, private val api
         return updateLevelConfigResponse
     }
 
+    //update relay status
+
+    fun updateRelayFan(token: String, jsonObject: JsonObject): LiveData<UpdateRelayResponse> {
+        val updateRelayResponse = MutableLiveData<UpdateRelayResponse>()
+
+        apiService.updatRelayFan(token, jsonObject).enqueue(object : Callback<UpdateRelayResponse> {
+            override fun onResponse(call: Call<UpdateRelayResponse>, response: Response<UpdateRelayResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayResponse
+    }
+    fun updateRelayLight(token: String, jsonObject: JsonObject): LiveData<UpdateRelayResponse> {
+        val updateRelayResponse = MutableLiveData<UpdateRelayResponse>()
+
+        apiService.updateRelayLight(token, jsonObject).enqueue(object : Callback<UpdateRelayResponse> {
+            override fun onResponse(call: Call<UpdateRelayResponse>, response: Response<UpdateRelayResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayResponse
+    }
+    fun updateRelayPhDown(token: String, jsonObject: JsonObject): LiveData<UpdateRelayResponse> {
+        val updateRelayResponse = MutableLiveData<UpdateRelayResponse>()
+
+        apiService.updatRelayPhDown(token, jsonObject).enqueue(object : Callback<UpdateRelayResponse> {
+            override fun onResponse(call: Call<UpdateRelayResponse>, response: Response<UpdateRelayResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayResponse
+    }
+    fun updateRelayPhUp(token: String, jsonObject: JsonObject): LiveData<UpdateRelayResponse> {
+        val updateRelayResponse = MutableLiveData<UpdateRelayResponse>()
+
+        apiService.updatRelayPhUp(token, jsonObject).enqueue(object : Callback<UpdateRelayResponse> {
+            override fun onResponse(call: Call<UpdateRelayResponse>, response: Response<UpdateRelayResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayResponse
+    }
+    fun updateRelayNutrisi(token: String, jsonObject: JsonObject): LiveData<UpdateRelayResponse> {
+        val updateRelayResponse = MutableLiveData<UpdateRelayResponse>()
+
+        apiService.updatRelayNutrisi(token, jsonObject).enqueue(object : Callback<UpdateRelayResponse> {
+            override fun onResponse(call: Call<UpdateRelayResponse>, response: Response<UpdateRelayResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayResponse
+    }
+    fun updateRelayManualOne(token: String, jsonObject: JsonObject): LiveData<UpdateRelayResponse> {
+        val updateRelayResponse = MutableLiveData<UpdateRelayResponse>()
+
+        apiService.updatRelayManualOne(token, jsonObject).enqueue(object : Callback<UpdateRelayResponse> {
+            override fun onResponse(call: Call<UpdateRelayResponse>, response: Response<UpdateRelayResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayResponse
+    }
+    fun updateRelayManualTwo(token: String, jsonObject: JsonObject): LiveData<UpdateRelayResponse> {
+        val updateRelayResponse = MutableLiveData<UpdateRelayResponse>()
+
+        apiService.updateRelayManualTwo(token, jsonObject).enqueue(object : Callback<UpdateRelayResponse> {
+            override fun onResponse(call: Call<UpdateRelayResponse>, response: Response<UpdateRelayResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayResponse
+    }
+    fun updateRelayManualThree(token: String, jsonObject: JsonObject): LiveData<UpdateRelayResponse> {
+        val updateRelayResponse = MutableLiveData<UpdateRelayResponse>()
+
+        apiService.updateRelayManualThree(token, jsonObject).enqueue(object : Callback<UpdateRelayResponse> {
+            override fun onResponse(call: Call<UpdateRelayResponse>, response: Response<UpdateRelayResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayResponse
+    }
+    fun updateRelayManualFive(token: String, jsonObject: JsonObject): LiveData<UpdateRelayResponse> {
+        val updateRelayResponse = MutableLiveData<UpdateRelayResponse>()
+
+        apiService.updateRelayManualFive(token, jsonObject).enqueue(object : Callback<UpdateRelayResponse> {
+            override fun onResponse(call: Call<UpdateRelayResponse>, response: Response<UpdateRelayResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayResponse
+    }
+    fun updateRelayManualSix(token: String, jsonObject: JsonObject): LiveData<UpdateRelayResponse> {
+        val updateRelayResponse = MutableLiveData<UpdateRelayResponse>()
+
+        apiService.updateRelayManualSix(token, jsonObject).enqueue(object : Callback<UpdateRelayResponse> {
+            override fun onResponse(call: Call<UpdateRelayResponse>, response: Response<UpdateRelayResponse>) {
+                val data = response.body()
+                if (response.isSuccessful && data != null) {
+                    updateRelayResponse.value = data
+                }
+            }
+
+            override fun onFailure(call: Call<UpdateRelayResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message.toString()}")
+            }
+        })
+
+        return updateRelayResponse
+    }
     companion object {
         const val TAG="MainRepository"
         @Volatile

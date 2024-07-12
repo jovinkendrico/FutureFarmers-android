@@ -14,6 +14,7 @@ import com.example.futurefarmers.R
 import com.example.futurefarmers.databinding.FragmentSettingBinding
 import com.example.futurefarmers.ui.ViewModelFactory
 import com.example.futurefarmers.ui.config.ConfigActivity
+import com.example.futurefarmers.ui.history.HistoryActivity
 import com.example.futurefarmers.ui.level.LevelActivity
 import com.example.futurefarmers.ui.login.LoginActivity
 
@@ -91,12 +92,25 @@ class SettingFragment : Fragment() {
         binding.tvLevelConfig.setOnClickListener {
             navToLevelConfig()
         }
+        binding.ivHistory.setOnClickListener {
+            navToRelayHistory()
+        }
+
+        binding.deskripsiRelayHistory.setOnClickListener {
+            navToRelayHistory()
+        }
+
+        binding.tvRelayHistory.setOnClickListener {
+            navToRelayHistory()
+        }
     }
 
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
-
+    private fun navToRelayHistory() {
+        startActivity(Intent(requireContext(), HistoryActivity::class.java))
+    }
     private fun navToConfigTimeout() {
         startActivity(Intent(requireContext(), ConfigActivity::class.java))
     }

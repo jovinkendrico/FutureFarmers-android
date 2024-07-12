@@ -7,7 +7,7 @@
 
         <item name="colorAccent">@color/white</item>
         <item name="colorSecondary">@color/white</item>
-
+        <item name="android:fontFamily">@font/font</item>
 
         <!-- Inactive thumb color -->
         <item name="switchStyle">@style/CustomSwitch</item> <!-- Apply custom switch style -->
